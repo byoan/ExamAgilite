@@ -27,38 +27,56 @@ public class Main {
 	    mapPrices.put(5, 15);
 	    mapPrices.put(6, 45);
 
-	    System.out.println("Saisissez le numéro du client concerné par la commande :");
-	    int numClient = sc.nextInt();
+	    int i = 1;
+	    int total = 0;
 
-	    System.out.println("Client choisi : " + numClient);
+        System.out.println("Saisissez le numéro du client concerné par la commande :");
+        int numClient = sc.nextInt();
 
-	    System.out.println("Choisissez une catégorie en saisissant son chiffre : ");
-	    System.out.println("1. Livre");
-	    System.out.println("2. Film");
-	    System.out.println("3. Jeux de société");
+        while (i != 0) {
+            System.out.println("Client choisi : " + numClient);
 
-	    int idCat = sc.nextInt();
-        System.out.println("Catégorie choisie : " + idCat);
+            System.out.println("Choisissez une catégorie en saisissant son chiffre : ");
+            System.out.println("1. Livre");
+            System.out.println("2. Film");
+            System.out.println("3. Jeux de société");
 
-	    System.out.println("Choisissez un produit en saisissant son chiffre : ");
-        if (idCat == 1) {
-            System.out.println("1. Clean Architecture : 40€/unité");
-            System.out.println("2. Java Passion : 20€/unité");
-        } else if(idCat == 2) {
-            System.out.println("3. Avatar (BRay) : 15€/unité");
-            System.out.println("4. Avatar (DVD) : 7€/unité");
-        } else if (idCat == 3) {
-            System.out.println("5. Kahuna : 15€/unité");
-            System.out.println("6. Trajan : 45€/unité");
+            int idCat = sc.nextInt();
+            System.out.println("Catégorie choisie : " + idCat);
+
+            System.out.println("Choisissez un produit en saisissant son chiffre : ");
+            if (idCat == 1) {
+                System.out.println("1. Clean Architecture : 40€/unité");
+                System.out.println("2. Java Passion : 20€/unité");
+            } else if(idCat == 2) {
+                System.out.println("3. Avatar (BRay) : 15€/unité");
+                System.out.println("4. Avatar (DVD) : 7€/unité");
+            } else if (idCat == 3) {
+                System.out.println("5. Kahuna : 15€/unité");
+                System.out.println("6. Trajan : 45€/unité");
+            } else {
+                continue;
+            }
+
+            int idObject = sc.nextInt();
+
+            System.out.println("Combien en voulez vous ?");
+
+            int quantity = sc.nextInt();
+            total += mapPrices.get(idObject) * quantity;
+            System.out.println("Objets choisis : " + quantity + "x " + mapNames.get(idObject).toString() + " pour un prix de " + total+ "€");
+
+            System.out.println("Voulez vous ajouter un autre produit ? (0 pour terminer)");
+            int wantAnotherProduct = sc.nextInt();
+
+            if (wantAnotherProduct == 0) {
+                if (total >= 60) {
+                    System.out.println("Votre total vaut plus de 60€, vous bénéficiez d'une réduciton de 10 %");
+                    total = total - (total*10/100);
+                }
+                System.out.println("Commande terminée. Total : " + total);
+                break;
+            }
         }
-
-	    int idObject = sc.nextInt();
-
-	    System.out.println("Combien en voulez vous ?");
-
-	    int quantity = sc.nextInt();
-	    int total = mapPrices.get(idObject) * quantity;
-	    System.out.println("Objets choisis : " + quantity + "x " + mapNames.get(idObject).toString() + " pour un prix de " + total+ "€");
-
     }
 }

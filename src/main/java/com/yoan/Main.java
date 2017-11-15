@@ -70,7 +70,7 @@ public class Main {
             int wantAnotherProduct = sc.nextInt();
 
             if (wantAnotherProduct == 0) {
-                if (total >= 60) {
+                if (total >= 40) {
                     System.out.println("Votre total vaut plus de 60€, vous bénéficiez d'une réduciton de 10 %");
                     total = total - (total*10/100);
                 }

@@ -7,12 +7,9 @@ public class Main {
     public static void main(String[] args) {
 	    Scanner sc = new Scanner(System.in);
 
-	    System.out.println("Saisissez un entier :");
-	    int entier = sc.nextInt();
+	    System.out.println("Saisissez le numéro du client concerné par la commande :");
+	    int numClient = sc.nextInt();
 
-	    System.out.println("Saisissez une chaîne : ");
-        sc.nextLine();
-	    String str = sc.nextLine();
-	    System.out.println("Fin");
+	    System.out.println("Client choisi : " + numClient);
     }
 }
